@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+LOG_DIR=$1
+COUNT=0
+MAX_FILES=5
+
+
+# Process only a limited number of files
+for LOG_FILE in "$LOG_DIR"/*
+do
+    while [ $COUNT -lt $MAX_FILES ]
+    do
+        echo "Processing file: $LOG_FILE"
+        COUNT=$((COUNT + 1))
+        break
+    done
+done
