@@ -1,0 +1,8 @@
+#!/bin/bash
+
+LOG_FILE="app.log"
+
+while IFS= read -r LINE
+do
+    echo "$LINE"
+done < "$LOG_FILE"
