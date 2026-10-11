@@ -1,12 +1,12 @@
 #!/bin/bash
 
-LOG_FILE="app.log"
-COUNT=0
-MAX_LINES=5
+LOG_FILE=$1
 
-# Process only a limited number of lines
-while IFS= read -r LINE && [ "$COUNT" -lt "$MAX_LINES" ]
+# Wait until the log file exists
+until [ -f "$LOG_FILE" ]
 do
-    echo "Processing log entry: $LINE"
-    COUNT=$((COUNT + 1))
-done < "$LOG_FILE"
+    echo "Waiting for log file: $LOG_FILE"
+    sleep 2
+done
+
+echo "Log file is available: $LOG_FILE"
