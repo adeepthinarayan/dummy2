@@ -1,3 +1,7 @@
 Application started
-  Warning: high memory usage
-Error: database connection failed
+User login successful
+    Warning: high memory usage
+Database connection established
+Error: request failed
+User logout successful
+Application stopped
