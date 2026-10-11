@@ -1,12 +1,9 @@
 #!/bin/bash
 
-PID=$1
-
-# Wait until the process finishes
-until ! kill -0 "$PID" 2>/dev/null
+until [ -f "report.txt" ]
 do
-    echo "Waiting for process $PID to finish..."
+    echo "Waiting for report.txt..."
     sleep 2
 done
 
-echo "Process $PID has finished."
+echo "report.txt is available."
