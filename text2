@@ -1,18 +1,12 @@
 #!/bin/bash
 
-
-LOG_DIR=$1
+LOG_FILE="app.log"
 COUNT=0
-MAX_FILES=5
+MAX_LINES=5
 
-
-# Process only a limited number of files
-for LOG_FILE in "$LOG_DIR"/*
+# Process only a limited number of lines
+while IFS= read -r LINE && [ "$COUNT" -lt "$MAX_LINES" ]
 do
-    while [ $COUNT -lt $MAX_FILES ]
-    do
-        echo "Processing file: $LOG_FILE"
-        COUNT=$((COUNT + 1))
-        break
-    done
-done
+    echo "Processing log entry: $LINE"
+    COUNT=$((COUNT + 1))
+done < "$LOG_FILE"
