@@ -1,12 +1,12 @@
 #!/bin/bash
 
-LOG_FILE=$1
+PID=$1
 
-# Wait until the log file exists
-until [ -f "$LOG_FILE" ]
+# Wait until the process finishes
+until ! kill -0 "$PID" 2>/dev/null
 do
-    echo "Waiting for log file: $LOG_FILE"
+    echo "Waiting for process $PID to finish..."
     sleep 2
 done
 
-echo "Log file is available: $LOG_FILE"
+echo "Process $PID has finished."
